@@ -25,7 +25,7 @@ You may specify Docbook source and output directories in project.clj - *.xml fil
 
     $ lein docbkx <type> [<type2> ...]
 
-where <type> is either of pdf, epub, html - see example below:
+where <type> is either of epub, html, pdf and xhtml - see example below:
 
     $ lein docbkx           # shows help
     $ lein docbkx html      # renders as HTML (excluding external resources)
