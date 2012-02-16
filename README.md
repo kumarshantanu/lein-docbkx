@@ -5,7 +5,11 @@ Leiningen plugin to render Docbook XML documents using Docbkx-tools.
 
 ## Usage
 
-Include as a dev-dependency:
+Install as a plugin:
+
+    $ lein plugin install lein-docbkx 0.1
+
+Or include as a dev-dependency:
 
     :dev-dependencies [lein-docbkx "0.1"]
 
