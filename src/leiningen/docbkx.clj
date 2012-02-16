@@ -1,15 +1,16 @@
 (ns leiningen.docbkx
-  (:import (java.io File)
-           (java.lang.reflect Field)
-           (com.agilejava.docbkx.maven DocbkxEpubMojo DocbkxHtmlMojo
-                                       DocbkxPdfMojo  DocbkxXhtmlMojo)))
+  (:import
+   (java.io File)
+   (java.lang.reflect Field)
+   (com.agilejava.docbkx.maven DocbkxEpubMojo DocbkxHtmlMojo
+                               DocbkxPdfMojo  DocbkxXhtmlMojo)))
 
 
 (defn ^Field get-field
   "Return Field object"
-  [class-or-obj ^String field-name] {:pre [(not (nil? class-or-obj))]}
-  (let [c (if (class? class-or-obj) class-or-obj
-              (class class-or-obj))
+  [object ^String field-name] {:pre [(not (nil? object))]}
+  (let [c (if (class? object) object
+              (class object))
         f (.getDeclaredField c field-name)]
     (.setAccessible f true)
     f))
@@ -17,10 +18,11 @@
 
 (def ^{:dynamic true} *docbkx-source-path* "docbkx-src")
 
-(def ^{:dynamic true} *docbkx-output-path* "out")
+(def ^{:dynamic true} *docbkx-output-path* "target")
 
 
 (defn render
+  "Render Docbook XML using `mojo` to a filename extension specied with `extn`"
   [extn mojo]
   (let [sourceDirectory     (get-field mojo "sourceDirectory")
         targetDirectory     (get-field mojo "targetDirectory")
@@ -40,16 +42,20 @@
 
 
 (defn help
+  "Show help for this plugin"
   []
   (println "
 Usage: $ lein docbkx <render-type> [<render-type> ...]
 
-where, <render-type> can be epub, html, pdf, xhtml
+where, <render-type> can be epub, html, pdf, xhtml (should be all lowercase)
 
 You may specify the Docbook source and output directory in project.clj:
 
     :docbkx-source-path \"docbook-src\"  ; default is \"docbkx-src\"
-    :docbkx-output-path \"docbook-out\"  ; default is \"out\"
+    :docbkx-target-path \"docbook-out\"  ; default is \"target\"
+
+This plugin uses Docbkx-tools: http://code.google.com/p/docbkx-tools/
+For rendering details you should refer the Docbkx-tools project.
 "))
 
 
@@ -60,8 +66,7 @@ You may specify the Docbook source and output directory in project.clj:
                                      *docbkx-source-path*)
             *docbkx-output-path* (or (:docbkx-output-path project)
                                      *docbkx-output-path*)]
-    (let [output-path (File. *docbkx-source-path*)]
-      (doseq [each-type (into [render-type] more)]
-        (if (contains? all-types each-type)
-          (render each-type (get all-types each-type))
-          (help))))))
+    (doseq [each-type (into [render-type] more)]
+      (if (contains? all-types each-type)
+        (render each-type (get all-types each-type))
+        (help)))))

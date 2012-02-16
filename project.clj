@@ -1,11 +1,11 @@
-(defproject lein-docbkx "0.1-SNAPSHOT"
+(defproject lein-docbkx "0.1"
   :description "Leiningen pluin for rendering Docbook XML documents using Docbkx-tools"
   :url "https://github.com/kumarshantanu/lein-docbkx"
   :dependencies     [[org.codehaus.plexus/plexus-utils         "1.1"]
-                     [com.agilejava.docbkx/docbkx-maven-base   "2.0.13"
+                     [com.agilejava.docbkx/docbkx-maven-base   "2.0.14"
                       :exclusions [org.codehaus.plexus/plexus-utils]]
-                     [com.agilejava.docbkx/docbkx-maven-plugin "2.0.13"
+                     [com.agilejava.docbkx/docbkx-maven-plugin "2.0.14"
                       :exclusions [org.codehaus.plexus/plexus-utils]]
                      [net.sf.docbook/docbook-xsl               "1.76.1"
                       :type "zip" :classifier "ns-resources"]]
-  :dev-dependencies [[org.clojure/clojure "1.2.1"]] )
+  :dev-dependencies [[org.clojure/clojure "1.3.0"]] )

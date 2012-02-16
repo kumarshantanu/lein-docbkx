@@ -9,10 +9,10 @@ Include as a dev-dependency:
 
     :dev-dependencies [lein-docbkx "0.1-SNAPSHOT"]
 
-You may specify Docbook source and output directories in project.clj - *.xml files are picked:
+You may optionally specify Docbook source and output directories in project.clj - *.xml files are picked:
 
     :docbkx-source-path "docbook-src"  ; default is "docbkx-src"
-    :docbkx-target-path "docbook-out"  ; default is "out"
+    :docbkx-target-path "docbook-out"  ; default is "target"
 
 
 ### Workaround for [Leiningen bug #244](https://github.com/technomancy/leiningen/issues/244)
@@ -43,6 +43,6 @@ On Docbkx-tools-users mailing list: [http://groups.google.com/group/docbkx-tools
 
 ## License
 
-Copyright (C) 2011 Shantanu Kumar
+Copyright (C) 2011-2012 Shantanu Kumar
 
 Distributed under the Eclipse Public License, the same as Clojure.
