@@ -11,7 +11,7 @@ Install as a plugin:
 
 Or include as a dev-dependency:
 
-    :dev-dependencies [lein-docbkx "0.1"]
+    :dev-dependencies [[lein-docbkx "0.1"]]
 
 You may optionally specify Docbook source and output directories in project.clj - *.xml files are picked:
 
