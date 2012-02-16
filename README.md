@@ -7,7 +7,7 @@ Leiningen plugin to render Docbook XML documents using Docbkx-tools.
 
 Include as a dev-dependency:
 
-    :dev-dependencies [lein-docbkx "0.1-SNAPSHOT"]
+    :dev-dependencies [lein-docbkx "0.1"]
 
 You may optionally specify Docbook source and output directories in project.clj - *.xml files are picked:
 
