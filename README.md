@@ -19,7 +19,7 @@ You may optionally specify Docbook source and output directories in project.clj 
     :docbkx-target-path "docbook-out"  ; default is "target"
 
 
-### Workaround for [Leiningen bug #244](https://github.com/technomancy/leiningen/issues/244)
+### Workaround for issue #1
 
     $ lein deps
     $ cp lib/dev/docbook-xsl-1.76.1-ns-resources.zip lib/dev/docbook-xsl-1.76.1-ns-resources.jar
